@@ -133,14 +133,33 @@ DATABASES = {
         "ATOMIC_REQUESTS": True,
     }
 }
-# ----------------------------------------------------------------------
-# django-channels configuration for Redis
-# ----------------------------------------------------------------------
+
+
+# ---------------------------
+# Redis configuration
+# ---------------------------
+REDIS_URL = os.environ.get("REDIS_URL", "redis://127.0.0.1:6379")  # fallback for local
+
+parsed_url = urllib.parse.urlparse(REDIS_URL)
+
+REDIS_HOST = parsed_url.hostname
+REDIS_PORT = parsed_url.port
+REDIS_PASSWORD = parsed_url.password
+
+# ---------------------------
+# Django Channels
+# ---------------------------
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("redis", 6379)],   # service name from docker-compose.yml
+            "hosts": [
+                (
+                    REDIS_HOST,
+                    REDIS_PORT,
+                    {"password": REDIS_PASSWORD} if REDIS_PASSWORD else {}
+                )
+            ],
         },
     },
 }
