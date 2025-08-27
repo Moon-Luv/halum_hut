@@ -14,6 +14,7 @@ from pathlib import Path
 from datetime import timedelta
 import environ
 import os
+import dj_database_url 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -122,16 +123,24 @@ ASGI_APPLICATION = 'halum_hut.asgi.application'
 # ----------------------------------------------------------------------
 # DATABASE & OTHER SETTINGS
 # ----------------------------------------------------------------------
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": env("POSTGRES_DB"),
+#         "USER": env("POSTGRES_USER"),
+#         "PASSWORD": env("POSTGRES_PASSWORD"),
+#         "HOST": env("POSTGRES_HOST", default="postgres"),  # docker service name
+#         "PORT": env("POSTGRES_PORT", default="5432"),
+#         "ATOMIC_REQUESTS": True,
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": env("POSTGRES_DB"),
-        "USER": env("POSTGRES_USER"),
-        "PASSWORD": env("POSTGRES_PASSWORD"),
-        "HOST": env("POSTGRES_HOST", default="postgres"),  # docker service name
-        "PORT": env("POSTGRES_PORT", default="5432"),
-        "ATOMIC_REQUESTS": True,
-    }
+    "default": dj_database_url.config(
+        default="postgresql://hostpital_user:hIxJS0iR1MbGJhY0RSI2tTjpsT3CA5Kb@dpg-d25kvenfte5s7389dh50-a.oregon-postgres.render.com/hostpital",
+        conn_max_age=600,
+        ssl_require=True,
+    )
 }
 
 
