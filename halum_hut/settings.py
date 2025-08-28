@@ -135,13 +135,13 @@ ASGI_APPLICATION = 'halum_hut.asgi.application'
 #     }
 # }
 
-DATABASES = {
-    "default": dj_database_url.config(
-        default="postgresql://hostpital_user:hIxJS0iR1MbGJhY0RSI2tTjpsT3CA5Kb@dpg-d25kvenfte5s7389dh50-a.oregon-postgres.render.com/hostpital",
-        conn_max_age=600,
-        ssl_require=True,
-    )
-}
+# DATABASES = {
+#     "default": dj_database_url.config(
+#         default="postgresql://hostpital_user:hIxJS0iR1MbGJhY0RSI2tTjpsT3CA5Kb@dpg-d25kvenfte5s7389dh50-a.oregon-postgres.render.com/hostpital",
+#         conn_max_age=600,
+#         ssl_require=True,
+#     )
+# }
 
 
 # ---------------------------
