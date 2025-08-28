@@ -123,17 +123,17 @@ ASGI_APPLICATION = 'halum_hut.asgi.application'
 # ----------------------------------------------------------------------
 # DATABASE & OTHER SETTINGS
 # ----------------------------------------------------------------------
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": env("POSTGRES_DB"),
-#         "USER": env("POSTGRES_USER"),
-#         "PASSWORD": env("POSTGRES_PASSWORD"),
-#         "HOST": env("POSTGRES_HOST", default="postgres"),  # docker service name
-#         "PORT": env("POSTGRES_PORT", default="5432"),
-#         "ATOMIC_REQUESTS": True,
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": env("POSTGRES_DB"),
+        "USER": env("POSTGRES_USER"),
+        "PASSWORD": env("POSTGRES_PASSWORD"),
+        "HOST": env("POSTGRES_HOST", default="postgres"),  # docker service name
+        "PORT": env("POSTGRES_PORT", default="5432"),
+        "ATOMIC_REQUESTS": True,
+    }
+}
 
 # DATABASES = {
 #     "default": dj_database_url.config(
